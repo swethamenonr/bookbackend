@@ -1,3 +1,3 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
+FROM openjdk:8-alpine
 
 COPY ./app /app
