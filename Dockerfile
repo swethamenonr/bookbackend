@@ -1,3 +1,4 @@
 FROM openjdk:8-alpine
 
-COPY ./app /app
+ADD target/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
