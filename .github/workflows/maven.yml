@@ -18,6 +18,6 @@ jobs:
             rm -rf test
             mkdir test 
             cd test 
-            echo 'test folder 
+            echo 'test folder' 
             git clone https://github.com/swethamenonr/bookbackend.git
             echo 'Deployment successful to digital ocean'
