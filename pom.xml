@@ -14,11 +14,9 @@
 	<name>spring-boot-backend-part</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
-    		<maven.compiler.source>11</maven.compiler.source>
-    		<maven.compiler.target>11</maven.compiler.target>
-    		<maven.compiler.release>11</maven.compiler.release>
-
+		<java.version>1.8</java.version>
+    		
+    		
 	</properties>
 	<dependencies>
 		<dependency>
@@ -61,15 +59,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>11</source>
-					<target>11</target>
-					<encoding>utf8</encoding>
-				</configuration>
-			</plugin>
+			
 		</plugins>
 	</build>
 
