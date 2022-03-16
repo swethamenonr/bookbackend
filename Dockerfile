@@ -1,4 +1,3 @@
-FROM openjdk:8-alpine
-EXPOSE 8080
-ADD target/*.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
+
+COPY ./app /app
