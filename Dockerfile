@@ -12,7 +12,9 @@ RUN mvn dependency:go-offline -B
 COPY ./src ./src
 
 # build for release
-RUN mvn package 
+RUN mvn clean
+RUN mvn compile
+RUN mvn package -DskipTests
 
 # our final base image
 FROM openjdk:8-jre-alpine
@@ -25,4 +27,3 @@ COPY --from=maven target/spring-boot-backend-part-0.0.1-SNAPSHOT.jar ./
 
 # set the startup command to run your binary
 CMD ["java", "-jar", "./spring-boot-backend-part-0.0.1-SNAPSHOT.jar"]
-
