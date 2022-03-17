@@ -36,7 +36,7 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
         
       - name: Link Mysql Container
-        run: docker run -p 8888:8888 --name spring-boot-backend-part-0.0.1-SNAPSHOT --link mysql-standalone:mysql -d spring-boot-backend-part-0.0.1-SNAPSHOT
+        run: docker run -p 8888:8888 --name spring-boot-backend-part --link mysql-standalone:mysql -d spring-boot-backend-part-0.0.1-SNAPSHOT
         
       - name: Log in to registry
         # This is where you will update the PAT to GITHUB_TOKEN
