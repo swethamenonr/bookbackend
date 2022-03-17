@@ -35,6 +35,9 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
         
+      - name: Running mysql container
+        run: docker run --name mysql-standalone -d mysql:8
+        
       - name: Link Mysql Container
         run: docker run -p 8888:8888 --name demo_img --link mysql-standalone:mysql -d $IMAGE_NAME
         
