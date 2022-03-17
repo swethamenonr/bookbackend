@@ -22,6 +22,9 @@ FROM openjdk:8-jre-alpine
 # set deployment directory
 WORKDIR /my-project
 
+#expose port
+EXPOSE 8888
+
 # copy over the built artifact from the maven image
 COPY --from=maven target/spring-boot-backend-part-0.0.1-SNAPSHOT.jar ./
 
