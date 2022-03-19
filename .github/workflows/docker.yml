@@ -32,11 +32,14 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
         
+      - name: Create docker network
+        run: docker network create user-mysql
+        
       - name: Run mysql standalone
-        run: docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=db_demo -e MYSQL_USER=root -e MYSQL_PASSWORD=root -p 127.0.0.0:3307:3306 -d mysql sleep 5000
+        run: docker run --name mysql-standalone --network user-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=db_demo -e MYSQL_USER=root -e MYSQL_PASSWORD=root -p 127.0.0.0:3307:3306 -d mysql sleep 5000
         
       - name: Link Mysql Container
-        run: docker run -p 8888:8888 --name demo_img --link mysql-standalone:mysql -d $IMAGE_NAME
+        run: docker run -p 8888:8888 --name $IMAGE_NAME --network user-mysql --link mysql-standalone:mysql -d $IMAGE_NAME
         
       - name: Log in to registry
         # This is where you will update the PAT to GITHUB_TOKEN
