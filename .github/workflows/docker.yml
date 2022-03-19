@@ -33,7 +33,7 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
         
       - name: Run mysql standalone
-        run: docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=db_demo -e MYSQL_USER=root -e MYSQL_PASSWORD=root -d mysql:8
+        run: docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=password -e MYSQL_USER=root -e MYSQL_PASSWORD=root -d mysql:8
         
       - name: Link Mysql Container
         run: docker run -p 8888:8888 --name demo_img --link mysql-standalone:mysql -d $IMAGE_NAME
