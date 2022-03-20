@@ -11,13 +11,16 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: ./my-project
-    dockerfile: "DockerFile"
+    build: 
+      context: "./my-project"
+      dockerfile: "DockerFile"
     ports:
       - "8888:8888"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-standalone:3306/demo?autoReconnect=true&useSSL=false
       SPRING_DATASOURCE_USERNAME: "root"
-      SPRING_DATASOURCE_PASSWORD: "root"    
+      SPRING_DATASOURCE_PASSWORD: "root" 
+      
+     
     depends_on:
       - mysql-standalone
