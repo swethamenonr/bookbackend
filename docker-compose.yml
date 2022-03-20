@@ -13,7 +13,7 @@ services:
       - mysqldb
     build: 
       context: "./"
-      dockerfile: "DockerFile"
+      dockerfile: "Dockerfile"
     ports:
       - "8888:8888"
     environment:
