@@ -12,7 +12,7 @@ services:
     depends_on:
       - mysqldb
     build: 
-      context: "./my-project"
+      context: "./"
       dockerfile: "DockerFile"
     ports:
       - "8888:8888"
