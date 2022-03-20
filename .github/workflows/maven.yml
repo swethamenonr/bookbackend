@@ -21,3 +21,4 @@ jobs:
             echo 'test folder' 
             git clone https://github.com/swethamenonr/bookbackend.git
             echo 'Deployment successful to digital ocean'
+            docker-compose -f docker-compose.yml up
