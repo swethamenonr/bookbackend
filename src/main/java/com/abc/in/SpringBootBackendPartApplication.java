@@ -10,6 +10,8 @@ import com.abc.in.repository.BookRepository;
 
 @SpringBootApplication
 public class SpringBootBackendPartApplication implements CommandLineRunner {
+	@Autowired
+	private DataSource dataSource;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootBackendPartApplication.class, args);
