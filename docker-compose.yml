@@ -8,8 +8,10 @@ services:
       - MYSQL_DATABASE=demo
     ports:
       - "3307:3306"
-  springboot-docker-container:
-    image: springboot-docker-container
+  app:
+    depends_on:
+      - mysqldb
+    build: ./my-project
     ports:
       - "8888:8888"
     environment:
