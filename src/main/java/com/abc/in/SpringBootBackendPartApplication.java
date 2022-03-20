@@ -12,21 +12,13 @@ import com.abc.in.repository.BookRepository;
 public class SpringBootBackendPartApplication implements CommandLineRunner {
 	@Autowired
 	private DataSource dataSource;
+	@Autowired
+	private BookRepository bookRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootBackendPartApplication.class, args);
 	}
 
-	@Autowired
-	private BookRepository bookRepository;
-	@Override
-	public void run(String... args) throws Exception {
-		Book book = new Book();
-		bookRepository.save(new Book(1, "Wings of Fire","A P J Abdul Kalam, Arun Tiwari", 500));
-		bookRepository.save(new Book(2, "The Alchemist","Paulo Coelho", 144));
-		bookRepository.save(new Book(3, "War and Peace","Leo Tolstoy", 299));
-		bookRepository.save(new Book(3, "Song of Solomon","Tony Morrison", 555));
-
-	}
+	
 
 }
