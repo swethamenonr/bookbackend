@@ -39,7 +39,7 @@ jobs:
         run: docker network create user-mysql
         
       - name: Run mysql standalone
-        run: docker run --name mysql-standalone -p 3306:3306 --network user-mysql -e MYSQL_ROOT_PASSWORD=root -it mysql/mysql-server:latest sleep 5000
+        run: docker run --name mysql-standalone -p 3306:3306 --network user-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:latest sleep 5000
         
       #- name: Link Mysql Container
       #  run: docker run --name springboot-mysql --link mysql-standalone:mysql/mysql-server:latest -d $IMAGE_NAME
