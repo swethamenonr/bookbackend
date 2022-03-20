@@ -32,14 +32,17 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
         
+      - name: download latest mysql server docker image
+        run: docker pull mysql/mysql-server:latest
+        
       - name: Create docker network
         run: docker network create user-mysql
         
       - name: Run mysql standalone
-        run: docker run --name mysql-standalone --network user-mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=db_demo -e MYSQL_USER=root -e MYSQL_PASSWORD=root -p 127.0.0.0:3307:3306 -d mysql sleep 5000
+        run: docker run --name mysql-standalone -p 3306:3306 --network user-mysql -e MYSQL_ROOT_PASSWORD=root -it mysql/mysql-server:latest sleep 5000
         
       #- name: Link Mysql Container
-      #  run: docker run --name springboot-mysql --link mysql-standalone:mysql -d $IMAGE_NAME
+      #  run: docker run --name springboot-mysql --link mysql-standalone:mysql/mysql-server:latest -d $IMAGE_NAME
         
       - name: Run Springboot Image
         run: docker run -p 8888:8888 --name springboot-mysql --network user-mysql -d $IMAGE_NAME sleep 9000
